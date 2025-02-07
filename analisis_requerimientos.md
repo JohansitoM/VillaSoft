@@ -13,15 +13,24 @@
 Este sistema está diseñado para facilitar la administración del conjunto residencial **"Villa del Sol"** mediante la digitalización de procesos clave.  
 
 ### **Incluye:**  
-- Gestión de propietarios e inquilinos.  
-- Control de acceso y registro de visitantes.  
-- Administración de pagos y estado de cuenta de propietarios.  
-- Comunicación entre la administración y los residentes.  
-- Gestión de apartamentos y usuarios del sistema.  
+- Gestión de propietarios e inquilinos.
 
+- Control de acceso y registro de visitantes.
+
+- Administración de pagos y estado de cuenta de propietarios.
+
+- Comunicación entre la administración y los residentes.
+
+- Gestión de apartamentos y usuarios del sistema.
+
+- Autenticación y seguridad.
+
+- Dashboard administrativo.
 ### **Fuera del Alcance:**  
 - Funcionalidades de mantenimiento de infraestructura.  
+
 - Integración con hardware de acceso biométrico o tarjetas de acceso.  
+
 - Módulo avanzado de contabilidad o facturación.  
 
 ---
@@ -33,18 +42,21 @@ Este sistema está diseñado para facilitar la administración del conjunto resi
 **Descripción**: Este módulo permite gestionar los propietarios e inquilinos del conjunto residencial.  
 
 #### **Requerimientos Funcionales**  
+|**Código**|**Requerimiento**|**Rol**|**Descripción**|**Prioridad**
+|--------|--------|---------|--------|--------|
+|**RF_GPI01**|Registrar, editar y eliminar sus inquilinos|Propietario|Solo podrá registrar inquilinos en su apartamento, podrá editar todos los datos de sus inquilinos, excepto la cedula y sus apartamentos|Alta|
+|**RF_GPI02**|Registrar, editar y eliminar propietarios|Administración|Debe permitir la edición de todos los datos y de todos los tipos de usuario|Alta|
+|**RF_GPI03**|Actualizar datos personales| Propietario/Inquilino|Podrán actualizar todos sus datos excepto la cédula y el apartamento|Alta|
+|**RF_GPI04**|El sistema debe permitir buscar propietarios o inquilinos|Administrador / propietario / vigilante /inquilino|Administrador: Acceso a todos los datos. Propietario: Solo sus inquilinos. Vigilante: Solo por apartamento para control. Inquilino: Solo su información.|Media|
 
-- **RF-GPI01**: El sistema debe permitir a la administración registrar a los propietarios con datos como nombre, cédula, teléfono y email.  
-- **RF-GPI02**: El sistema debe permitir a los propietarios registrar y administrar sus inquilinos.  
-- **RF-GPI03**: Los propietarios e inquilinos deben poder actualizar sus datos personales, excepto la cédula y el apartamento.  
-- **RF-GPI04**: La administración debe poder modificar o eliminar registros de propietarios e inquilinos.  
-- **RF-GPI05**: El sistema debe permitir buscar propietarios o inquilinos por nombre, cédula o apartamento.  
 
 #### **Requerimientos No Funcionales**  
 
-- **RNF-GPI01**: La información de los propietarios e inquilinos debe ser protegida mediante autenticación segura.  
-- **RNF-GPI02**: Solo los administradores pueden modificar datos de propietarios.  
-- **RNF-GPI03**: La búsqueda debe estar disponible para todos los usuarios autenticados.  
+|**Código**|**Requerimiento**|
+|----------|-----------------|
+|**RNF_GPI01**|La información de los propietarios e inquilinos debe ser protegida mediante autenticación segura.  |
+|**RNF_GPI02**|Solo los administradores pueden modificar datos de propietarios. | 
+|**RNF_GPI03**|La búsqueda debe estar disponible para todos los usuarios autenticados.|
 
 #### **Criterios de Aceptación**  
 
@@ -60,15 +72,20 @@ Este sistema está diseñado para facilitar la administración del conjunto resi
 
 #### **Requerimientos Funcionales**  
 
-- **RF-CAS01**: Los vigilantes deben poder registrar la entrada y salida de visitantes con nombre, cédula, apartamento a visitar y hora de ingreso.  
-- **RF-CAS02**: Los propietarios e inquilinos deben poder pre-registrar visitantes para agilizar su acceso.  
-- **RF-CAS03**: El sistema debe permitir consultar el historial de visitas por apartamento o visitante.  
-- **RF-CAS04**: Los vigilantes deben poder reportar incidentes de seguridad en el sistema.  
+|**Código**|**Requerimiento**|**Rol**|**Descripción**|**Prioridad**
+|--------|--------|---------|--------|--------|
+|**RF_CAS01**|Registrar la entrada y salida de visitantes|Vigilante|En el registro se incluirá el nombre, cédula, apartamento a visitar y hora de ingreso del visitante|Alta|
+|**RF_CAS02**|Pre-registrar visitantes para agilizar su acceso|Propietarios / Inquilinos|Podrán registrar previamente visitantes para agilizar su acceso|Media|
+|**RF_CAS03**|Consultar el historial de visitas|Vigilante / Administración|Consultas por apartamento o visitante|Media|
+|**RF_CAS04**|Consultar el historial de visitas|Inquilino|Por el nombre del visitante|Baja|  
+|**RF_CAS05**|Consultar el historial de visitas|Propietario|Consultar el historial de visitas en sus apartamentos, permitiendo búsqueda por nombre de visitante y número de apartamento.|Baja|  
+|**RF-CAS06**|Reportar incidentes de seguridad en el sistema|Vigilante|El reporte se debe notificar a la administración|Alta|
 
 #### **Requerimientos No Funcionales**  
-
-- **RNF-CAS01**: La información de acceso debe almacenarse en tiempo real.  
-- **RNF-CAS02**: Solo vigilantes y administradores pueden registrar y ver el historial de visitantes.  
+|**Código**|**Requerimiento**|
+|--------------|--------------|
+|**RNF-CAS01**|La información de acceso debe almacenarse en tiempo real.  
+|**RNF-CAS02**|Solo vigilantes y administradores pueden registrar y ver el historial de visitantes.  
 
 #### **Criterios de Aceptación**  
 
@@ -78,49 +95,29 @@ Este sistema está diseñado para facilitar la administración del conjunto resi
 
 ---
 
-### **3.3 Módulo de Pagos y Finanzas**  
-
-**Descripción**: Este módulo permite gestionar los pagos y finanzas del conjunto residencial.  
-
-#### **Requerimientos Funcionales**  
-
-- **RF-PF01**: La administración debe poder registrar y actualizar el pago de cuotas de administración por apartamento.  
-- **RF-PF02**: Los propietarios deben poder consultar el estado de cuenta de su apartamento.  
-- **RF-PF03**: El sistema debe enviar notificaciones a los propietarios con pagos pendientes.  
-- **RF-PF04**: El sistema debe generar reportes de pagos y deudas por apartamento.  
-- **RF-PF05**: Los propietarios deben poder pagar sus cuotas de administración en línea por medio de PSE o tarjeta de débito o crédito.  
-
-#### **Requerimientos No Funcionales**  
-
-- **RNF-PF01**: El sistema debe permitir exportar reportes en formatos PDF y Excel.  
-- **RNF-PF02**: La información financiera debe estar protegida mediante encriptación.  
-
-#### **Criterios de Aceptación**  
-
-- Los pagos deben reflejarse en el estado de cuenta en un tiempo máximo de 5 minutos.  
-- Los reportes de pagos y deudas deben poder descargarse en formatos PDF y Excel.  
-- Solo los propietarios pueden acceder a la información de pagos de su apartamento.  
-
----
-
 ### **3.4 Módulo de Comunicación y Notificaciones**  
 
-**Descripción**: Este módulo permite gestionar las comunicaciones y notificaciones del conjunto residencial.  
+**Descripción**: Este módulo permite gestionar las comunicaciones y notificaciones del conjunto residencial. 
 
 #### **Requerimientos Funcionales**  
 
-- **RF-CN01**: La administración debe poder enviar notificaciones a propietarios e inquilinos sobre eventos, mantenimientos o avisos importantes.  
-- **RF-CN02**: Los propietarios e inquilinos deben poder enviar quejas o solicitudes a la administración.  
-- **RF-CN03**: El sistema debe permitir visualizar un historial de comunicaciones.  
+| **Código**   | **Requerimiento** | **Rol** | **Descripción** | **Prioridad** |
+|-------------|------------------|---------|----------------|--------------|
+| **RF-CN01** | Enviar notificaciones sobre eventos, mantenimientos o avisos | Administración | Permitirá enviar mensajes a propietarios e inquilinos con información relevante sobre el conjunto | Alta |
+| **RF-CN02** | Enviar quejas o solicitudes | Propietario/Inquilino | Podrán enviar quejas o solicitudes a la administración para su gestión | Alta |
+| **RF-CN03** | Visualizar historial de comunicaciones | Administración/Propietario/Inquilino | Permitirá consultar el historial de notificaciones y mensajes enviados o recibidos | Media |
+| **RF-CN04** | Enviar correo de bienvenida tras el registro | Sistema | Se enviará un correo automático a cada usuario registrado en la app con instrucciones y bienvenida | Alta |
 
 #### **Requerimientos No Funcionales**  
 
-- **RNF-CN01**: Las notificaciones deben enviarse por correo electrónico y/o en la plataforma.  
+| **Código**   | **Requerimiento** |
+|-------------|------------------|
+| **RNF-CN01** | Las notificaciones deben enviarse por correo electrónico y/o en la plataforma |
 
 #### **Criterios de Aceptación**  
 
 - Los mensajes deben enviarse a todos los destinatarios en un tiempo máximo de 1 minuto.  
-- El historial de comunicaciones debe estar disponible por un período mínimo de 12 meses.  
+- El historial de comunicaciones debe estar disponible por un período mínimo de 12 meses.    
 
 ---
 
@@ -130,13 +127,18 @@ Este sistema está diseñado para facilitar la administración del conjunto resi
 
 #### **Requerimientos Funcionales**  
 
-- **RF-AC01**: La administración debe poder registrar, modificar y eliminar apartamentos.  
-- **RF-AC02**: La administración debe poder asignar propietarios a cada apartamento.  
-- **RF-AC03**: El sistema debe permitir la gestión de usuarios y permisos.  
+| **Código**   | **Requerimiento** | **Rol** | **Descripción** | **Prioridad** |
+|-------------|------------------|---------|----------------|--------------|
+| **RF-AC01** | Registrar, modificar y eliminar apartamentos | Administración | Permitirá gestionar los apartamentos disponibles en el sistema | Alta |
+| **RF-AC02** | Asignar propietarios a apartamentos | Administración | Cada apartamento deberá tener un único propietario registrado en el sistema | Alta |
+| **RF-AC03** | Gestionar usuarios y permisos | Administración | Permitirá crear, modificar y asignar permisos a los usuarios del sistema | Alta |
+| **RF-AC04** | Visualizar información de apartamentos e inquilinos | Propietario | Cada propietario podrá ver los apartamentos donde sea titular y los inquilinos registrados en ellos | Media |
 
 #### **Requerimientos No Funcionales**  
 
-- **RNF-AC01**: Solo la administración puede acceder a la gestión de apartamentos y usuarios.  
+| **Código**   | **Requerimiento** |
+|-------------|------------------|
+| **RNF-AC01** | Solo la administración puede acceder a la gestión de apartamentos y usuarios |
 
 #### **Criterios de Aceptación**  
 
@@ -144,19 +146,80 @@ Este sistema está diseñado para facilitar la administración del conjunto resi
 - Cada apartamento debe tener un único propietario registrado en el sistema.  
 - Los cambios en la asignación de propietarios deben quedar registrados con un historial de modificaciones.  
 
+### **3.6 Módulo de Pagos y Finanzas**  
+
+**Descripción**: Este módulo permite gestionar los pagos y finanzas del conjunto residencial.  
+
+#### **Requerimientos Funcionales**  
+
+| **Código**   | **Requerimiento** | **Rol** | **Descripción** | **Prioridad** |
+|-------------|------------------|---------|----------------|--------------|
+| **RF-PF01** | Registrar y actualizar pagos de cuotas | Administración | Permite registrar y actualizar los pagos de cuotas de administración por apartamento. | Alta |
+| **RF-PF02** | Consultar estado de cuenta | Propietario | Permite a los propietarios visualizar el estado de cuenta de su apartamento. | Alta |
+| **RF-PF03** | Notificar pagos pendientes | Sistema | Envía notificaciones automáticas a los propietarios con pagos pendientes. | Media |
+| **RF-PF04** | Generar reportes de pagos y deudas | Sistema / Administración | Permite generar reportes financieros por apartamento. | Alta |
+| **RF-PF05** | Pago en línea | Propietario | Los propietarios pueden pagar sus cuotas en línea a través de PSE o tarjeta de débito/crédito. | Alta |
+
+#### **Requerimientos No Funcionales**  
+
+| **Código**   | **Requerimiento** |
+|-------------|------------------|
+| **RNF-PF01** | El sistema debe permitir exportar reportes en formatos PDF y Excel. |
+| **RNF-PF02** | La información financiera debe estar protegida mediante encriptación. |
+
+#### **Criterios de Aceptación**  
+
+- Los pagos deben reflejarse en el estado de cuenta en un tiempo máximo de 5 minutos.  
+- Los reportes de pagos y deudas deben poder descargarse en formatos PDF y Excel.  
+- Solo los propietarios pueden acceder a la información de pagos de su apartamento.  
+
+### **3.X Módulo de Autenticación y Control de Acceso**  
+
+**Descripción**: Este módulo gestiona la autenticación segura de los usuarios, asegurando el acceso autorizado al sistema.  
+
+#### **Requerimientos Funcionales**  
+
+| **Código**   | **Requerimiento** | **Rol** | **Descripción** | **Prioridad** |
+|-------------|------------------|---------|----------------|--------------|
+| **RF-AC01** | Inicio de sesión | Todos los usuarios | Permite a los usuarios autenticarse en el sistema con correo y contraseña. | Alta |
+| **RF-AC02** | Recuperación de contraseña | Todos los usuarios | Permite restablecer la contraseña a través del correo electrónico registrado. | Alta |
+| **RF-AC03** | Gestión de roles y permisos | Administración | Define los accesos y permisos de cada usuario dentro del sistema. | Alta |
+
+#### **Requerimientos No Funcionales**  
+
+| **Código**   | **Requerimiento** |
+|-------------|------------------|
+| **RNF-AC01** | La autenticación debe realizarse con protocolos de seguridad como JWT o OAuth2. |
+| **RNF-AC02** | Las contraseñas deben almacenarse encriptadas. |
+
+#### **Criterios de Aceptación**  
+
+- El sistema debe validar credenciales correctamente antes de conceder acceso.  
+- Solo los usuarios con permisos adecuados pueden acceder a módulos restringidos.  
+
 ---
 
-Este documento establece las bases para el desarrollo del sistema. **¿Necesitas algún ajuste o agregar más detalles?** 🚀  
+### **3.X Módulo de Dashboard de Administración**  
 
-<!-- ### 2.6 Módulo de Reservas de Áreas comunes (Versión 2)
+**Descripción**: Este módulo proporciona una vista general de la administración del conjunto residencial, con acceso rápido a reportes y notificaciones.  
 
-**Descripción**: Este módulo permite gestionar las reservas de áreas comunes como el salón para eventos, la cancha de futbol, la piscina, gimnasio del conjunto residencial
+#### **Requerimientos Funcionales**  
 
-**Requerimientos Funcionales**:
-- RF-RAC01: Los propietarios e inquilinos deben poder reservar áreas comunes para eventos o actividades.
-- RF-RAC02: El sistema debe permitir consultar el historial de reservas de áreas comunes.
-- RF-RAC03: El sistema debe permitir cancelar reservas de áreas comunes.
-- RF-RAC04: El sistema debe permitir consultar la disponibilidad de cada área
-- RF-RAC05: El sistema debe permitir a la administración asignar un costo por hora para cada área -->
+| **Código**   | **Requerimiento** | **Rol** | **Descripción** | **Prioridad** |
+|-------------|------------------|---------|----------------|--------------|
+| **RF-DA01** | Visualizar resumen de pagos | Administración | Muestra un reporte de pagos recibidos, pendientes y estado financiero del conjunto. | Alta |
+| **RF-DA02** | Ver incidentes reportados | Administración | Lista de reportes de seguridad o problemas en el conjunto. | Alta |
+| **RF-DA03** | Generar reportes rápidos | Administración | Permite descargar informes de pagos, visitas y otros datos clave. | Media |
 
+#### **Requerimientos No Funcionales**  
 
+| **Código**   | **Requerimiento** |
+|-------------|------------------|
+| **RNF-DA01** | Los datos deben actualizarse en tiempo real. |
+| **RNF-DA02** | Los reportes deben poder exportarse en formatos PDF y Excel. |
+
+#### **Criterios de Aceptación**  
+
+- La administración debe poder acceder a un resumen de pagos en menos de 2 segundos.  
+- Los incidentes deben ser visibles con prioridad según su gravedad.  
+- Los reportes deben poder descargarse en formatos accesibles para impresión y análisis.  
